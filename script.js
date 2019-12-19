@@ -30,7 +30,18 @@ body.appendChild(buttonElGen);
 body.appendChild(buttonElCopy);
 body.appendChild(containerEl);
 
-console.log ("test");
+// console.log ("test");
+
+// starting here are 
+var alphabetLowerCharacters = "abcdefghijklmnopqrstuvwxyz ".split("");
+var alphabetUppperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .split("");
+var numericCharacters = "0123456789 ".split("");
+var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" .split("");
+
+var randomItemLower = alphabetLowerCharacters[Math.floor(math.random()*alphabetLowerCharacters.length)];
+var randomItemUpper = alphabetUppperCharacters[Math.floor(math.random()*alphabetUppperCharacters.length)];
+var randomNumberChar = numericCharacters[Math.floor(Math.random()*numericCharacters.length)];
+var randomSpecialChar = specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
 
 
 
