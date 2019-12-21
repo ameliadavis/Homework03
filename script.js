@@ -10,14 +10,45 @@ var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" .split("");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword.addEventListener(click);
   var passwordText = document.querySelector("#password");// this sets the password we generate on the page
-
+  var pwdLength= prompt("How many Characters do you need in your password", " ");
+  var lCase = confirm("Do you want Lowercase Characters?");
+  var uCase = confirm(" Do you want Uppercase Characters?");
+  var spec = confirm("do you want Special Characters?");
+  var numbers = confirm("do you want number Characters?");
+  
   passwordText.value = password;
 
   copyBtn.removeAttribute("disabled");
   copyBtn.focus();
+
+  for (i = 0; i < pwdLength -1; i++) {
+    if (lCase === true){
+        password.push(alphabetLowerCharacters[Math.floor(Math.random()*alphabetLowerCharacters.length)]);// push the randomly generated character into the final password array. 
+        
+        console.log (password);
+        if (password.length === pwdLength){ break; }
+    }
+    if (uCase === true){
+        password.push(alphabetUppperCharacters[Math.floor(Math.random()*alphabetUppperCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (password);
+            if (password.length === pwdLength){ break; } //should break out if we meet user set length. 
+    }
+    if (spec === true){
+        password.push(numericCharacters[Math.floor(Math.random()*numericCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+        if (password.length === pwdLength){ break; }
+    }
+    if (spec === true){
+        password.push(specialCharacters[Math.floor(Math.random()*specialCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+        if (password.length === pwdLength){ break; }
+    }
+  }
 }
+
+
 
 function copyToClipboard() {
   // BONUS 
