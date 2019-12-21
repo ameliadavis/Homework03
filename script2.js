@@ -1,4 +1,4 @@
-set the variable for the body 
+//set the variable for the body 
 var body = document.body;
 
 //Create all the elements of HTML 
@@ -41,9 +41,9 @@ body.appendChild(buttonCopyWrapperEl);
 // console.log ("test");
 
 // starting here are arrays for the 4 different types of Characters
-var alphabetLowerCharacters = "abcdefghijklmnopqrstuvwxyz ".split("");
+var alphabetLowerCharacters = "abcdefghijklmnopqrstuvwxyz".split("");
 var alphabetUppperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .split("");
-var numericCharacters = "0123456789 ".split("");
+var numericCharacters = "0123456789".split("");
 var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" .split("");
 
 // These variables pull random numbers from the above arrays. 
@@ -52,20 +52,52 @@ var randomItemUpper = alphabetUppperCharacters[Math.floor(Math.random()*alphabet
 var randomNumberChar = numericCharacters[Math.floor(Math.random()*numericCharacters.length)];
 var randomSpecialChar = specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
 
+//promt the user for the different elements we need
 var pwdLength= prompt("How many Characters do you need in your password", " ");
 var lCase = confirm("Do you want Lowercase Characters?");
 var uCase = confirm(" Do you want Uppercase Characters?");
 var spec = confirm("do you want Special Characters?");
-var 
+var num = confirm("do you want number Characters?");
+var finalpassword = [" "]; 
+
+//create the for loop which will run through the randome elements and assemble the password. 
+
+for (i = 0; i < pwdLength; i++) {
+    if (lCase === true){
+        finalpassword.push(alphabetLowerCharacters[Math.floor(Math.random()*alphabetLowerCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+        if (finalpassword.length === pwdLength){
+        break;
+        }
+    }
+    if (uCase === true){
+        finalpassword.push(alphabetUppperCharacters[Math.floor(Math.random()*alphabetUppperCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+            if (finalpassword.length === pwdLength){ break;} //should break out if we meet user set length. 
+    }
+    if (spec === true){
+        finalpassword.push(numericCharacters[Math.floor(Math.random()*numericCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+        if (finalpassword.length === pwdLength){
+        break;
+        }
+    }
+    if (spec === true){
+        finalpassword.push(specialCharacters[Math.floor(Math.random()*specialCharacters.length)]);// push the randomly generated character into the final password array. 
+        console.log (finalpassword);
+        if (finalpassword.length === pwdLength){
+        break;
+        }
+    }
+}
 
 
-
-buttonElGen.addEventListener("click", function(event) {
-    event.preventDefault();// you can do other things on event not just preventDefualt, which in this case is preventing submit
-    // textAreaEl.value = "";
-    alert(randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar);
-    console.log ( randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar)
-    });
+// buttonElGen.addEventListener("click", function(event) {
+//     event.preventDefault();// you can do other things on event not just preventDefualt, which in this case is preventing submit
+//     // textAreaEl.value = "";
+//     alert(randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar);
+//     console.log ( randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar)
+//     });
 
 // copy to clipboard https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
 
