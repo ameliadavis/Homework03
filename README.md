@@ -9,4 +9,4 @@ JavaScript
 Bootstrap 4 
 
 ### Reuirements
-Must generate password between 8-12 characters. Must use javascript to generate HTML. 
+Must generate password between 8-126 characters. Must use javascript to generate HTML. 
