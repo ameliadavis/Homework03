@@ -1,5 +1,6 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.getElementById("generate"); // this is the button itse
+var password = [];
 
 
 // starting here are arrays for the 4 different types of Characters
@@ -9,44 +10,71 @@ var numericCharacters = "0123456789 ".split("");
 var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" .split("");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword.addEventListener(click);
-  var passwordText = document.querySelector("#password");// this sets the password we generate on the page
-  var pwdLength= prompt("How many Characters do you need in your password", " ");
+  function writePassword( ) { 
+    // var strPassword = "";
+    // for (var i = 0; i < password.length; i++) { 
+    //   strPassword.concat(password[i]); // we are building on the string we are building above each time we go through this loop 
+    //   console.log(strPassword);
+    //   console.log(password[i]);
+    // }
+
+  // var password = generatePassword() ;
+  var passwordText = document.getElementById("password");// this sets the password we generate on the page
+ 
+  passwordText.value = password.join("");
+
+  // copyBtn.removeAttribute("disabled");
+  // copyBtn.focus();
+  }
+
+  // Need to trigger when button is triggered
+ function clickEvent () {
+  var pwdLength = prompt("How many Characters do you need in your password", " ");
+   console.log(pwdLength);
+
+  if (pwdLength < 8) {
+    alert ("You cannot have less than 8 characters!");
+  }
+  else if (pwdLength > 126) {
+    alert ("Maximum amount of characters is 126");
+  }
+  else  {
   var lCase = confirm("Do you want Lowercase Characters?");
   var uCase = confirm(" Do you want Uppercase Characters?");
   var spec = confirm("do you want Special Characters?");
   var numbers = confirm("do you want number Characters?");
-  
-  passwordText.value = password;
 
-  copyBtn.removeAttribute("disabled");
-  copyBtn.focus();
-
-  for (i = 0; i < pwdLength -1; i++) {
-    if (lCase === true){
+  for (i = 0; i < pwdLength; i++) {
+    if (lCase === true && password.length != pwdLength){
         password.push(alphabetLowerCharacters[Math.floor(Math.random()*alphabetLowerCharacters.length)]);// push the randomly generated character into the final password array. 
-        
         console.log (password);
-        if (password.length === pwdLength){ break; }
+        // if (password.length === pwdLength){ break;}
     }
-    if (uCase === true){
+    if (uCase === true && password.length != pwdLength){
         password.push(alphabetUppperCharacters[Math.floor(Math.random()*alphabetUppperCharacters.length)]);// push the randomly generated character into the final password array. 
         console.log (password);
-            if (password.length === pwdLength){ break; } //should break out if we meet user set length. 
+            // if (password.length === pwdLength){ break; } //should break out if we meet user set length. 
     }
-    if (spec === true){
+    if (numbers === true && password.length != pwdLength){
         password.push(numericCharacters[Math.floor(Math.random()*numericCharacters.length)]);// push the randomly generated character into the final password array. 
-        console.log (finalpassword);
-        if (password.length === pwdLength){ break; }
+        console.log (password);
+        // if (password.length === pwdLength){ break; }
     }
-    if (spec === true){
+    if (spec === true && password.length != pwdLength){
         password.push(specialCharacters[Math.floor(Math.random()*specialCharacters.length)]);// push the randomly generated character into the final password array. 
-        console.log (finalpassword);
-        if (password.length === pwdLength){ break; }
+        console.log (password);
+        // if (password.length === pwdLength){ break; }
     }
-  }
+  } 
+  writePassword(); 
 }
+  
+   } 
+  
+  
+
+  // needs to trigger after prompts and confirms
+  
 
 
 
@@ -55,73 +83,16 @@ function copyToClipboard() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", clickEvent);
+
+// generatePassword.addEventListener("Click", clickevent);
+
 
 // BONUS EVENT LISTENER
 
 
 
 
-// set the variable for the body 
-// var body = document.body;
-
-// //Create all the elements of HTML 
-// var h1El = document.createElement("h1");
-// var hrEl = document.createElement("hr");
-// var formEl = document.createElement("form");
-// var buttonElGen = document.createElement("button");
-// var buttonElCopy = document.createElement("button");
-// var containerEl = document.createElement("container-lg");
-// var passwordEl = document.createElement("div");
-// var buttonWrapperEl = document.createElement ("row");
-// var buttonGenWrapperEl = document.createElement ("col-3");
-// var buttonCopyWrapperEl = document.createElement ("col-3");
-// var h2El = document.createElement("h2");
-
-// // Set the text content of relevant elements
-// h1El.textContent = "Generate a Password";
-// buttonElGen.textContent = "Generate Password";
-// buttonElCopy.textContent = "Copy to Clipboard";
-
-// // Style all of our elements
-// h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-// containerEl.setAttribute("style", "margin:500px; width:80%; text-align:center;");
-// passwordEl.setAttribute("style", "margin;500px; width:80%, border:dashed grey 2 px;");
-// buttonElGen.setAttribute("style", "background-color:Purple,");
-// buttonWrapperEl.setAttribute("style", "Padding:60%")
-// buttonElGen.setAttribute("style", "padding:50px, ")
-
-// // append elements
-// body.appendChild(h1El);
-// body.appendChild(hrEl);
-// body.appendChild(buttonElGen);
-// body.appendChild(buttonElCopy);
-// body.appendChild(containerEl);
-// body.appendChild(buttonWrapperEl);
-// body.appendChild(h2El);
-// body.appendChild(buttonGenWrapperEl);
-// body.appendChild(buttonCopyWrapperEl);
-
-// // console.log ("test");
-
-// // starting here are arrays for the 4 different types of Characters
-// var alphabetLowerCharacters = "abcdefghijklmnopqrstuvwxyz ".split("");
-// var alphabetUppperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" .split("");
-// var numericCharacters = "0123456789 ".split("");
-// var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" .split("");
-
-// // These variables pull random numbers from the above arrays. 
-// var randomItemLower = alphabetLowerCharacters[Math.floor(Math.random()*alphabetLowerCharacters.length)];
-// var randomItemUpper = alphabetUppperCharacters[Math.floor(Math.random()*alphabetUppperCharacters.length)];
-// var randomNumberChar = numericCharacters[Math.floor(Math.random()*numericCharacters.length)];
-// var randomSpecialChar = specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
-
-// buttonElGen.addEventListener("click", function(event) {
-//     event.preventDefault();// you can do other things on event not just preventDefualt, which in this case is preventing submit
-//     // textAreaEl.value = "";
-//     alert(randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar);
-//     console.log ( randomItemLower + randomItemUpper + randomNumberChar + randomSpecialChar + randomSpecialChar + randomItemUpper + randomItemLower + randomNumberChar)
-//     });
 
 // // copy to clipboard https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
 
